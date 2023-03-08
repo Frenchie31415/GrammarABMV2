@@ -25,17 +25,17 @@ class AppTest(unittest.TestCase):
         app.subtract_one()
         self.assertEqual(app.number, 1)
 
-    def test_double(self):
+    def test_half(self):
         app = App()
-        app.set_number(1)
-        app.double()
-        self.assertEqual(app.number, 2)
+        app.set_number(2)
+        app.half()
+        self.assertEqual(app.number, 1)
 
-    def test_divide_by_three(self):
+    def test_triple(self):
         app = App()
         app.set_number(3)
-        app.divide_by_three()
-        self.assertEqual(app.number, 1)       
+        app.triple()
+        self.assertEqual(app.number, 9)       
 
 if __name__ == '__main__':
     unittest.main()

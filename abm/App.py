@@ -17,12 +17,12 @@ class App:
         self.number = self.number - 1
         self.log_change()
 
-    def double(self):
-        self.number = self.number * 2
+    def half(self):
+        self.number = self.number / 2
         self.log_change()
 
-    def divide_by_three(self):
-        self.number = self.number / 3
+    def triple(self):
+        self.number = self.number * 3
         self.log_change()
 
     def log_set(self):

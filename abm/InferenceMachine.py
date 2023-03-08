@@ -22,9 +22,6 @@ class InferenceMachine:
             to = self.historical_states[i+1]
             trans = self.infere(fr,to)
             self.historical_transitions.append(trans)
-        
-        print(self.historical_states)
-        print(self.historical_transitions)
 
     def infere(self,fr,to):
         if fr == to:
@@ -33,10 +30,10 @@ class InferenceMachine:
             return "add_one"
         elif fr - 1 == to:
             return "subtract_one"
-        elif fr * 2 == to:
-            return "double"
-        elif fr / 3 == to:
-            return "divide_by_three"
+        elif fr / 2 == to:
+            return "half"
+        elif fr * 3 == to:
+            return "triple"
         else:
             return "gap_in_provenance"
         
