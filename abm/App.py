@@ -27,12 +27,12 @@ class App:
 
     def log_set(self):
         logging.basicConfig(filename="AppLog.log",filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
-        log_statement = "SET,",str(self.number)
+        log_statement = "SET",str(self.number)
         logging.info(log_statement)
     
     def log_change(self):
         logging.basicConfig(filename="AppLog.log",filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
-        log_statement = "CHANGE,",str(self.number)
+        log_statement = "CHANGE",str(self.number)
         logging.info(log_statement)
     
 if __name__ == "__main__":
