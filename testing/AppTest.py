@@ -35,7 +35,7 @@ class AppTest(unittest.TestCase):
         app = App()
         app.set_number(3)
         app.divide_by_three()
-        self.assertEqual(app.number, 1)
+        self.assertEqual(app.number, 1)       
 
 if __name__ == '__main__':
     unittest.main()
