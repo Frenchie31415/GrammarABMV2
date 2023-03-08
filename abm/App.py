@@ -3,7 +3,11 @@ import logging
 class App:
     def __init__(self):
         self.number = 0
+        self.filename = "AppLog"
         self.log_set()
+
+    def set_filename(self,name):
+        self.filename = name
     
     def set_number(self, new_num):
         self.number = new_num
@@ -26,12 +30,14 @@ class App:
         self.log_change()
 
     def log_set(self):
-        logging.basicConfig(filename="AppLog.log",filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
+        file = self.filename + '.log'
+        logging.basicConfig(filename=file,filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
         log_statement = "SET",str(self.number)
         logging.info(log_statement)
     
     def log_change(self):
-        logging.basicConfig(filename="AppLog.log",filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
+        file = self.filename + '.log'
+        logging.basicConfig(filename=file,filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
         log_statement = "CHANGE",str(self.number)
         logging.info(log_statement)
     
