@@ -17,6 +17,7 @@ class IntermediateL1Agent:
         self.triple = dist[2] / cumulative
         self.half = dist[3] / cumulative
         self.init_num = init_num
+        self.dist = [self.add_one,self.subtract_one,self.triple,self.half]
     
     def set_dist(self,dist):
         self.dist = dist
@@ -32,16 +33,21 @@ class IntermediateL1Agent:
 
         #Find way to select option with random distribution
         for i in range(0,num_steps):
-            choice = np.random.choice(4,1,p=self.dist)
-            if choice == 0:
-                app.add_one()
-            elif choice == 1:
-                app.subtract_one()
-            elif choice == 2:
-                app.triple()
-            else:
-                app.half()
+            self.perform_action(app)
 
+    def perform_action(self,app):
+        choice = np.random.choice(4,1,p=self.dist)
+        if choice == 0:
+            app.add_one()
+        elif choice == 1:
+            app.subtract_one()
+        elif choice == 2:
+            app.triple()
+        else:
+            if app.get_number() % 2 == 0:
+                app.half()
+            else:
+                self.perform_action(app)
 
 if __name__ == "__main__":
     agent = IntermediateL1Agent(101,500)

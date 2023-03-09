@@ -43,16 +43,21 @@ class IntermediateL5Agent:
         #Find way to select option with random distribution
         for i in range(0,num_steps):
             self.check_direction(app)
+            self.perform_action(app)
 
-            choice = np.random.choice(4,1,p=self.dist)
-            if choice == 0:
-                app.add_one()
-            elif choice == 1:
-                app.subtract_one()
-            elif choice == 2:
-                app.triple()
-            else:
+    def perform_action(self,app):
+        choice = np.random.choice(4,1,p=self.dist)
+        if choice == 0:
+            app.add_one()
+        elif choice == 1:
+            app.subtract_one()
+        elif choice == 2:
+            app.triple()
+        else:
+            if app.get_number() % 2 == 0:
                 app.half()
+            else:
+                self.perform_action(app)
 
 
 if __name__ == "__main__":
