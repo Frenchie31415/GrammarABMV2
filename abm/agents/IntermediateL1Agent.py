@@ -44,5 +44,5 @@ class IntermediateL1Agent:
 
 
 if __name__ == "__main__":
-    agent = IntermediateL1Agent(101)
+    agent = IntermediateL1Agent(101,500)
     agent.start_agent(100)

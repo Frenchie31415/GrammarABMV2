@@ -56,5 +56,5 @@ class IntermediateL5Agent:
 
 
 if __name__ == "__main__":
-    agent = IntermediateL5Agent(101)
+    agent = IntermediateL5Agent(101,500)
     agent.start_agent(100)
