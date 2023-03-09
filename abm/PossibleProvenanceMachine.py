@@ -13,7 +13,7 @@ class PossibleProvenanceMachine:
     
     def get_lb(self,a):
         if a % 3 == 0:
-            return a/3
+            return int(a/3)
         else:
             return a
         
@@ -43,23 +43,26 @@ class PossibleProvenanceMachine:
         self.ub = self.get_ub(b)
         self.md = self.get_max_depth(a,b)
         self.g = nx.DiGraph()
-        self.g.add_nodes_from([fr,to])
         
+        self.g.add_node(fr,fillcolor='green')
+        self.g.add_node(to,fillcolor='red')
+
         self.explore_node(fr,to)
 
-        #paths = list(nx.all_simple_paths(self.g,fr,to))
-        #nodes_in_paths = list(set(list(itertools.chain.from_iterable(paths))))
+        paths = list(nx.all_simple_paths(self.g,fr,to))
+        nodes_in_paths = list(set(list(itertools.chain.from_iterable(paths))))
 
-        #print(nodes_in_paths)
-        #nodes = list(self.g.nodes)
+        print(nodes_in_paths)
+        nodes = list(self.g.nodes)
         
-        #for node in nodes:
-        #    if node not in nodes_in_paths:
-        #        self.g.remove_node(node)
+        for node in nodes:
+            if node not in nodes_in_paths:
+                self.g.remove_node(node)
 
         A = nx.nx_agraph.to_agraph(self.g)
         A.layout(prog='dot')
-        A.draw('test3.png')
+        A.draw('test4.png')
+        print(A.to_string())
 
         #BFS ayclic tree search
         return None
@@ -115,5 +118,5 @@ class PossibleProvenanceMachine:
 
 if __name__ == '__main__':
     pp = PossibleProvenanceMachine()
-    pp.calc_graph(16,8)
+    pp.calc_graph(3,5)
     
