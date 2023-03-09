@@ -34,5 +34,37 @@ class PossibleProvenanceMachineTest(unittest.TestCase):
         actual_graph = pp.get_graph()
         self.assertEqual(exp_graph, actual_graph)
 
+    #Bound tests
+    def test_upper_bound(self):
+        pp = PossibleProvenanceMachine()
+        exp_ub = pp.get_ub(2)
+        actual_ub = 4
+        self.assertEqual(exp_ub,actual_ub)
+
+    def test_lower_bound_div3(self):
+        pp = PossibleProvenanceMachine()
+        exp_lb = pp.get_lb(3)
+        actual_lb = 1
+        self.assertEqual(exp_lb,actual_lb)
+
+    def test_lower_bound_otherwise(self):
+        pp = PossibleProvenanceMachine()
+        exp_lb = pp.get_lb(2)
+        actual_lb = 2
+        self.assertEqual(exp_lb,actual_lb)
+
+    #Depth tests
+    def test_depth_smalldif(self):
+        pp = PossibleProvenanceMachine()
+        exp_lb = pp.get_depth(2,5)
+        actual_lb = 9
+        self.assertEqual(exp_lb,actual_lb)
+
+    def test_depth_otherwise(self):
+        pp = PossibleProvenanceMachine()
+        exp_lb = pp.get_depth(1,12)
+        actual_lb = 11
+        self.assertEqual(exp_lb,actual_lb)
+
 if __name__ == '__main__':
     unittest.main()
