@@ -10,13 +10,13 @@ from InferenceMachine import InferenceMachine
 
 
 #Agent randomly adds or subtracts one (no goal number just randomly moves about)
-class AdvancedL1Agent:
+class AdvancedL4Agent:
     def __init__(self,init_num,target):
         self.init_num = init_num
         self.target = target
     
     def start_agent(self,num_steps):
-        self.app = App('AdvancedL1Agent')
+        self.app = App('AdvancedL4Agent')
         self.app.set_number(self.init_num)
         diff = abs(self.app.get_number() - self.target)
         if diff <= 10:
@@ -45,12 +45,7 @@ class AdvancedL1Agent:
         
         if len(paths) > 1:
             sorted(paths,key=len)
-            dist_numerical = list(reversed(range(1,len(paths)+1))) #Creates y=-x line
-            cumulative = sum(dist_numerical)
-            dist = [x/cumulative for x in dist_numerical] #Creates linear dist
-            choice = (np.random.choice(len(paths),1,p=dist))[0] #Selects index
-            print(choice)
-            path = paths[choice]
+            path = paths[0]
         else:
             path = paths[0]
 
@@ -71,5 +66,5 @@ class AdvancedL1Agent:
                 self.app.half()
 
 if __name__ == "__main__":
-    agent = AdvancedL1Agent(101,130)
+    agent = AdvancedL4Agent(101,130)
     agent.start_agent(100)
