@@ -8,9 +8,9 @@ from App import App
 class IntermediateL1Agent:
     def __init__(self,init_num,target):
         if init_num < target:
-            dist = [0.3,0.2,0.3,0.2]
+            dist = [0.27,0.23,0.27,0.23]
         else:
-            dist = [0.2,0.3,0.2,0.3]
+            dist = [0.23,0.27,0.23,0.27]
         cumulative = sum(dist)
         self.add_one = dist[0] / cumulative
         self.subtract_one = dist[1] / cumulative

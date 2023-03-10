@@ -19,7 +19,7 @@ class App:
         self.log_change()
 
     def half(self):
-        self.number = self.number / 2
+        self.number = int(self.number / 2)
         self.log_change()
 
     def triple(self):
@@ -36,6 +36,9 @@ class App:
         logging.basicConfig(filename=file,filemode='a',datefmt='%H:%M:%S',level=logging.INFO)
         log_statement = "CHANGE",str(self.number)
         logging.info(log_statement)
+    
+    def get_number(self):
+        return self.number
     
 if __name__ == "__main__":
     app = App()
