@@ -1,12 +1,10 @@
-import logging
+import random
 
 class StocasticModel:
-    def __init__(self,name):
-        self.number = 0
-        self.filename = name + '.log'
-        
-    
-    
-    
-if __name__ == "__main__":
-    sm = StocasticModel()
+    def __init__(self,language,history):
+        self.language = language
+        self.history = history
+
+    def predict_prov_path(self,trans_paths):
+        path_index = random.randint(0,len(trans_paths)-1)
+        return trans_paths[path_index]

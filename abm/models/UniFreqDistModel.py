@@ -38,6 +38,10 @@ class UniFreqModel:
 
             #Update number of paths
             num_paths = num_paths - len(to_remove)
+
+        #Line makes function recursive. used if 2 paths are the joint longest and yet very similar
+        #if num_paths > 1:
+        #    self.predict_prov_path(paths)
         
         return paths[0]
 
