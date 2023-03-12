@@ -59,10 +59,10 @@ class PossibleProvenanceMachine:
             if node not in nodes_in_paths:
                 self.g.remove_node(node)
 
-        A = nx.nx_agraph.to_agraph(self.g)
-        A.layout(prog='dot')
-        A.draw('test4.png')
-        print(A.to_string())
+        #A = nx.nx_agraph.to_agraph(self.g)
+        #A.layout(prog='dot')
+        #A.draw('test4.png')
+        #print(A.to_string())
 
         #BFS ayclic tree search
         return None

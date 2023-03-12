@@ -14,23 +14,22 @@ class AdvancedL1Agent:
     def __init__(self,init_num,target):
         self.init_num = init_num
         self.target = target
+        self.app = App('AdvancedL1Data/AdvancedL1Agent')
     
-    def start_agent(self,num_steps):
-        self.app = App('AdvancedL1Agent')
+    def start_agent(self):
         self.app.set_number(self.init_num)
         diff = abs(self.app.get_number() - self.target)
         if diff <= 10:
             self.calc_path(self.init_num,self.target)
         else:
-            #Do steps in 10 step chunks + remaineder
-            num_partitions = int(diff/5)
+            #Do steps in 10 step chunks + remainder
+            num_partitions = 3
             if self.init_num < self.target:
                 sections = list(self.split(range(self.init_num,self.target),num_partitions)) #Need to create function to assess number of splits
             else:
                 sections = list(self.split(range(self.init_num,self.target,step=-1),num_partitions))
             for x in sections:
                     self.calc_path(x[0],x[len(x)-1])
-
             return None
         
     def split(self,a, n):
@@ -49,7 +48,6 @@ class AdvancedL1Agent:
             cumulative = sum(dist_numerical)
             dist = [x/cumulative for x in dist_numerical] #Creates linear dist
             choice = (np.random.choice(len(paths),1,p=dist))[0] #Selects index
-            print(choice)
             path = paths[choice]
         else:
             path = paths[0]
@@ -71,5 +69,6 @@ class AdvancedL1Agent:
                 self.app.half()
 
 if __name__ == "__main__":
-    agent = AdvancedL1Agent(101,130)
-    agent.start_agent(100)
+    agent = AdvancedL1Agent(100,110)
+    for i in range(0,1000,10):
+        agent.calc_path(100+i,110+i)

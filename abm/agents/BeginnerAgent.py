@@ -13,8 +13,8 @@ class BeginnerAgent:
         self.p = p
     
     def start_agent(self,num_steps):
-        app = App('BeginnerAgent')
-        app.set_number(101)
+        app = App('BeginnerData/BeginnerAgent')
+        app.set_number(self.init_num)
 
         for i in range(0,num_steps):
             choice = random.random()
@@ -25,5 +25,5 @@ class BeginnerAgent:
 
 
 if __name__ == "__main__":
-    agent = BeginnerAgent(101)
-    agent.start_agent(100)
+    agent = BeginnerAgent(1001)
+    agent.start_agent(1000)

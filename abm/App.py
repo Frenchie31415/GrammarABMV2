@@ -4,7 +4,6 @@ class App:
     def __init__(self,name):
         self.number = 0
         self.filename = name + '.log'
-        self.log_set()
     
     def set_number(self, new_num):
         self.number = new_num
