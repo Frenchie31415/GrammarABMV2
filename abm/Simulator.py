@@ -1,5 +1,6 @@
 from InferenceMachine import InferenceMachine
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 class Simulator:
     def __init__(self,file_name):
@@ -22,6 +23,18 @@ class Simulator:
                            'start_states': self.start_states,
                            'final_states': self.final_states,
                           'states': self.state_instances})
+        #Need to update
+        self.train = self.df[:80]
+        self.test = self.df[80:]
+
+        #Splitting data
+        self.X_train = self.train.drop(['states'],axis=1)
+        self.y_train = self.train['states']
+
+        self.X_test = self.train.drop(['states'],axis=1)
+        self.y_test = self.train['states']
+
+    
 
     #Parse COPY of states and transf as argument to retain data in class
     def create_instances(self,states,transf):
@@ -33,7 +46,7 @@ class Simulator:
         self.transf_instances.append(transf[0:8])
         self.create_instances(states[9:],transf[8:]) #Recursive call
     
-    
+
     
 if __name__ == "__main__":
     sim = Simulator("agents/BeginnerData/BeginnerAgent.log")
